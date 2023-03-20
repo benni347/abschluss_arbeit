@@ -19,7 +19,7 @@ nameElement.focus();
 window.greet = function () {
   // Get name
   const name = nameElement.value;
-  console.log(name);
+  
   // Check if the input is empty
   if (name === "") return;
 
