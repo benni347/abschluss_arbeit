@@ -33,7 +33,6 @@ func main() {
 			WindowIsTranslucent: true,
 		},
 	})
-
 	if err != nil {
 		println("Error:", err.Error())
 	}
