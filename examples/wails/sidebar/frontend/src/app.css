@@ -1,7 +1,37 @@
 #sidebar {
     background-color: rgba(240, 220, 230, 0.7);
-    height: 85vh;
+    height: 100%;
     width: 5vw;
     left: 0;
-    margin: 0
+    margin: 0;
+    grid-row: 1/-1;
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-rows: 1fr 7fr;
+}
+
+#icon_preview {
+    grid-row: 2/-1;
+    overflow-y: hidden;
+}
+
+img {
+    width: 4vw;
+    aspect-ratio: 1/1;
+}
+
+#app {
+    display: grid;
+    grid-template-columns: 2fr 18fr;
+    grid-template-rows: 1fr 8fr;
+}
+
+.title,
+#icongetter{
+    grid-column: 2/-1;
+    grid-row: 2/-1;
+}
+
+.title {
+    grid-row: 1/-1;
 }

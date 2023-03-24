@@ -39,7 +39,6 @@ func (a *App) IconGenerator(amount string) ([]string, error) {
 		fileName := fmt.Sprintf("%d.png", randomNumber)
 		url := fmt.Sprintf("https://robohash.org/%d?gravatar=yes&size=500x500", randomNumber)
 		fullPath := filePath + fileName
-		fmt.Printf("Full Path: %s\n", fullPath)
 		file, err := os.Create(fullPath)
 		if err != nil {
 			return nil, err
@@ -62,6 +61,15 @@ func (a *App) IconGenerator(amount string) ([]string, error) {
 		icons[i] = fileName
 	}
 	return icons, nil
+}
+
+func (a *App) DeleteFile(fileName string) {
+	filePath := "./frontend/src/assets/images/"
+	fullPath := filePath + fileName
+	err := os.Remove(fullPath)
+	if err != nil {
+		fmt.Println(err)
+	}
 }
 
 // https://opentdb.com/api.php?amount=10&difficulty=hard

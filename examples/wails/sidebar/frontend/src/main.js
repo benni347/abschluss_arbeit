@@ -1,7 +1,7 @@
 import "./style.css";
 import "./app.css";
 
-import { IconGenerator } from "../wailsjs/go/main/App";
+import { DeleteFile, IconGenerator } from "../wailsjs/go/main/App";
 
 document.getElementById("icongetter").innerHTML = `
   <input type="number" name="amount" value="" id="amount">
@@ -30,6 +30,11 @@ window.icon = function () {
       .catch((err) => {
         console.error(err);
       });
+  } catch (err) {
+    console.error(err);
+  }
+  try {
+    DeleteFile(fileName);
   } catch (err) {
     console.error(err);
   }
