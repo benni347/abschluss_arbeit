@@ -2,11 +2,11 @@ package main
 
 import (
 	"context"
-	"encoding/base64"
 	"fmt"
 	"io/ioutil"
 	"math/rand"
 	"net/http"
+	"os"
 	"strconv"
 )
 
@@ -35,7 +35,15 @@ func (a *App) IconGenerator(amount string) ([]string, error) {
 	icons := make([]string, amountInt)
 	for i := 0; i < amountInt; i++ {
 		randomNumber := rand.Int()
+		filePath := "./frontend/src/assets/images/"
+		fileName := fmt.Sprintf("%d.png", randomNumber)
 		url := fmt.Sprintf("https://robohash.org/%d?gravatar=yes&size=500x500", randomNumber)
+		fullPath := filePath + fileName
+		fmt.Printf("Full Path: %s\n", fullPath)
+		file, err := os.Create(fullPath)
+		if err != nil {
+			return nil, err
+		}
 		fmt.Println(url)
 		resp, err := http.Get(url)
 		if err != nil {
@@ -46,8 +54,12 @@ func (a *App) IconGenerator(amount string) ([]string, error) {
 		if err != nil {
 			return nil, err
 		}
-		icon := base64.StdEncoding.EncodeToString(body)
-		icons[i] = icon
+
+		_, writeErr := file.Write(body)
+		if writeErr != nil {
+			return nil, writeErr
+		}
+		icons[i] = fileName
 	}
 	return icons, nil
 }
