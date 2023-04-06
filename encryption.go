@@ -68,17 +68,14 @@ func main() {
 		return
 	}
 
-	msg := []byte("Hello World!")
+	msg := []byte("Profil. Berufsvorbereitung")
 
 	hash := calculateHash(msg)
-	fmt.Printf("Hash: %x\n", hash)
 	signature, err := sign(privateKey, hash)
 	if err != nil {
 		fmt.Printf("Error signing message: %v\n", err)
 		return
 	}
-
-	fmt.Printf("Signature: %x\n", signature)
 
 	valid := verify(publicKey, hash, signature)
 	if valid {
