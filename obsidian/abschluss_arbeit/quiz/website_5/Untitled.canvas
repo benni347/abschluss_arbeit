@@ -1,0 +1,12 @@
+{
+	"nodes":[
+		{"type":"file","file":"quiz/website_5/Ali.md","id":"5bf79b91d8087435","x":-690,"y":-670,"width":400,"height":620,"color":"5"},
+		{"type":"file","file":"quiz/website_5/Noel.md","id":"484e6c1ae0bb0cf2","x":-190,"y":-670,"width":400,"height":620,"color":"5"},
+		{"type":"file","file":"quiz/website_5/richtig.md","id":"76e0caaf6fb65ceb","x":290,"y":270,"width":400,"height":400,"color":"3"}
+	],
+	"edges":[
+		{"id":"9fe4f73b90788ef9","fromNode":"5bf79b91d8087435","fromSide":"right","toNode":"484e6c1ae0bb0cf2","toSide":"left"},
+		{"id":"6ca80dc8dd727787","fromNode":"5bf79b91d8087435","fromSide":"bottom","toNode":"76e0caaf6fb65ceb","toSide":"top"},
+		{"id":"e954fdf2301e234b","fromNode":"484e6c1ae0bb0cf2","fromSide":"bottom","toNode":"76e0caaf6fb65ceb","toSide":"top"}
+	]
+}
