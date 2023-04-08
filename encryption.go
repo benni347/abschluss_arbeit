@@ -4,8 +4,11 @@ import (
 	"crypto/ecdsa"
 	"crypto/elliptic"
 	"crypto/rand"
+	"encoding/hex"
 	"fmt"
 	"math/big"
+
+	"github.com/alexflint/go-arg"
 
 	"github.com/cloudflare/circl/sign/dilithium"
 	"golang.org/x/crypto/blake2b"
@@ -95,13 +98,19 @@ func unpackDilithiumKeys(
 	return mode.PublicKeyFromBytes(packedPublicKey), mode.PrivateKeyFromBytes(packedPrivateKey)
 }
 
-func signDilithium(privateKey dilithium.PrivateKey, msg []byte, modeName string) ([]byte, error) {
+func signDilithium(
+	privateKey dilithium.PrivateKey,
+	msg []byte,
+	modeName string,
+) ([]byte, int, error) {
 	mode := dilithium.ModeByName(modeName)
 	if mode == nil {
-		return nil, fmt.Errorf("mode not supported")
+		return nil, -1, fmt.Errorf("mode not supported")
 	}
 
-	return mode.Sign(privateKey, msg), nil
+	signatureSize := mode.SignatureSize()
+
+	return mode.Sign(privateKey, msg), signatureSize, nil
 }
 
 func verifyDilithium(
@@ -121,22 +130,29 @@ func verifyDilithium(
 // ---
 
 func printError(message string, err error) {
-	fmt.Printf("ERROR: %s: %v\n", message, err)
+	fmt.Printf("\033[1m%s\033[0m: %s\n", "ERROR: %s: %v\n", message, err)
 }
 
-func printInfo(message string) {
-	fmt.Printf("INFO: %s\n", message)
+func printInfo(message string, verbose bool) {
+	if verbose {
+		fmt.Printf("\033[1m%s\033[0m: %s\n", "INFO", message)
+	}
 }
 
 func main() {
+	var args struct {
+		Verbose bool `arg:"-v" help:"Prints all debug messages."`
+	}
+	arg.MustParse(&args)
+
+	msg := []byte("Profil. Berufsvorbereitung")
+
 	curve := elliptic.P256()
 	privateKeyEcc, publicKeyEcc, err := generateECCKeyPair(curve)
 	if err != nil {
 		printError("Generating key pair for ecc the error is", err)
 		return
 	}
-
-	msg := []byte("Profil. Berufsvorbereitung")
 
 	hash := calculateHash(msg)
 	signature, err := signEcc(privateKeyEcc, hash)
@@ -147,9 +163,9 @@ func main() {
 
 	valid := verifyEcc(publicKeyEcc, hash, signature)
 	if valid {
-		printInfo("Signature is valid!")
+		printInfo("Signature is valid!", args.Verbose)
 	} else {
-		printInfo("Signature is not valid!")
+		printInfo("Signature is not valid!", args.Verbose)
 	}
 
 	modeName := "Dilithium5-AES"
@@ -160,15 +176,21 @@ func main() {
 		return
 	}
 
+	printInfo("CRYSTAl-Dilithium Public Key: "+hex.EncodeToString(publicKey.Bytes()), args.Verbose)
+
 	// Pack and unpack Dilithium keys
 	packedPublicKey, packedPrivateKey := packDilithiumKeys(publicKey, privateKey)
 	publicKey2, privateKey2 := unpackDilithiumKeys(modeName, packedPublicKey, packedPrivateKey)
 
 	// Sign and verify with Dilithium keys
-	signature, err = signDilithium(privateKey2, msg, modeName)
+	signature, signatureLength, err := signDilithium(privateKey2, msg, modeName)
 	if err != nil {
 		printError("During signing the message with Dilithium the error is", err)
 	}
+
+	printInfo(fmt.Sprintf("Signature length is: %d", signatureLength), args.Verbose)
+
+	printInfo("CRYSTAl-Dilithium Signature: "+hex.EncodeToString(signature), args.Verbose)
 
 	valid, err = verifyDilithium(publicKey2, msg, signature, modeName)
 	if err != nil {
@@ -176,8 +198,8 @@ func main() {
 	}
 
 	if valid {
-		printInfo("CRYSTAl-Dilithium Signature is valid!")
+		printInfo("CRYSTAl-Dilithium Signature is valid!", args.Verbose)
 	} else {
-		printInfo("CRYSTAl-Dilithium Signature is not valid!")
+		printInfo("CRYSTAl-Dilithium Signature is not valid!", args.Verbose)
 	}
 }
