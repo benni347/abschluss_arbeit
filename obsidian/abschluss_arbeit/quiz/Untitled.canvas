@@ -1,0 +1,12 @@
+{
+	"nodes":[
+		{"type":"file","file":"quiz/2023-03-30.md","id":"7c8cfeb8a5627af1","x":-200,"y":-320,"width":400,"height":520,"color":"5"},
+		{"id":"3c1373cb66dc5420","x":300,"y":-320,"width":400,"height":520,"color":"2","type":"file","file":"quiz/2023-04-06.md"},
+		{"id":"44017dd97bebf7d5","x":75,"y":400,"width":305,"height":340,"color":"4","type":"text","text":"**Richitg**\n\n*2023-03-30*\n\n7 / 10\n\n*2023-04-06*\n4 / 10"}
+	],
+	"edges":[
+		{"id":"014361c7c73c04c8","fromNode":"7c8cfeb8a5627af1","fromSide":"right","toNode":"3c1373cb66dc5420","toSide":"left","color":"6"},
+		{"id":"feec2d49cf8174d4","fromNode":"7c8cfeb8a5627af1","fromSide":"bottom","toNode":"44017dd97bebf7d5","toSide":"top","color":"3"},
+		{"id":"840569cf9631596b","fromNode":"3c1373cb66dc5420","fromSide":"bottom","toNode":"44017dd97bebf7d5","toSide":"top","color":"3"}
+	]
+}
