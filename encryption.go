@@ -61,6 +61,9 @@ func verifyEcc(publicKey *ecdsa.PublicKey, messageHash []byte, signature []byte)
 	return ecdsa.Verify(publicKey, messageHash, r, s)
 }
 
+// From here to the lines which is a comment which contains --- the functions used are under the BSD3-Clause license.
+// https://pkg.go.dev/github.com/cloudflare/circl/sign/dilithium
+
 func generateDilithiumKeyPair(modeName string) (dilithium.PublicKey, dilithium.PrivateKey, error) {
 	mode := dilithium.ModeByName(modeName)
 	if mode == nil {
@@ -114,6 +117,8 @@ func verifyDilithium(
 
 	return mode.Verify(publicKey, msg, signature), nil
 }
+
+// ---
 
 func main() {
 	curve := elliptic.P256()
