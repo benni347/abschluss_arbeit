@@ -120,11 +120,19 @@ func verifyDilithium(
 
 // ---
 
+func printError(message string, err error) {
+	fmt.Printf("ERROR: %s: %v\n", message, err)
+}
+
+func printInfo(message string) {
+	fmt.Printf("INFO: %s\n", message)
+}
+
 func main() {
 	curve := elliptic.P256()
 	privateKeyEcc, publicKeyEcc, err := generateECCKeyPair(curve)
 	if err != nil {
-		fmt.Printf("Error generating key pair: %v\n", err)
+		printError("Generating key pair for ecc the error is", err)
 		return
 	}
 
@@ -133,22 +141,22 @@ func main() {
 	hash := calculateHash(msg)
 	signature, err := signEcc(privateKeyEcc, hash)
 	if err != nil {
-		fmt.Printf("Error signing message: %v\n", err)
+		printError("During signing the message with ECC the error is", err)
 		return
 	}
 
 	valid := verifyEcc(publicKeyEcc, hash, signature)
 	if valid {
-		fmt.Println("Signature is valid!")
+		printInfo("Signature is valid!")
 	} else {
-		fmt.Println("Signature is not valid!")
+		printInfo("Signature is not valid!")
 	}
 
 	modeName := "Dilithium5-AES"
 	// Generate Dilithium key pair
 	publicKey, privateKey, err := generateDilithiumKeyPair(modeName)
 	if err != nil {
-		fmt.Println(err)
+		printError("During generating Dilithium key pair the error is", err)
 		return
 	}
 
@@ -159,22 +167,17 @@ func main() {
 	// Sign and verify with Dilithium keys
 	signature, err = signDilithium(privateKey2, msg, modeName)
 	if err != nil {
-		fmt.Println(
-			"ERROR: The error occurred while signing the message with CRYSTAl-Dilithium. The error is: ",
-			err,
-		)
+		printError("During signing the message with Dilithium the error is", err)
 	}
+
 	valid, err = verifyDilithium(publicKey2, msg, signature, modeName)
 	if err != nil {
-		fmt.Println(
-			"ERROR: The error occurred while validating the message with CRYSTAl-Dilithium. The error is: ",
-			err,
-		)
+		printError("During verifying the message with Dilithium the error is", err)
 	}
 
 	if valid {
-		fmt.Println("CRYSTAl-Dilithium Signature is valid!")
+		printInfo("CRYSTAl-Dilithium Signature is valid!")
 	} else {
-		fmt.Println("CRYSTAl-Dilithium Signature is not valid!")
+		printInfo("CRYSTAl-Dilithium Signature is not valid!")
 	}
 }
