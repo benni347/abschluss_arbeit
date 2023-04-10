@@ -11,11 +11,14 @@
             "id": "599a9f28b1aa32da",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "abschluss_arbeit/2023-03-30.md",
-                "mode": "source",
-                "source": false
+                "file": "Untitled.canvas",
+                "viewState": {
+                  "x": 0,
+                  "y": -147.87,
+                  "zoom": 0
+                }
               }
             }
           }
@@ -85,7 +88,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "abschluss_arbeit/2023-03-30.md",
+                "file": "abschluss_arbeit/2023-04-08.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +105,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "abschluss_arbeit/2023-03-30.md",
+                "file": "abschluss_arbeit/2023-04-08.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +128,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "abschluss_arbeit/2023-03-30.md"
+                "file": "abschluss_arbeit/2023-04-08.md"
               }
             }
           }
@@ -146,10 +149,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c8945767a57d85c5",
+  "active": "599a9f28b1aa32da",
   "lastOpenFiles": [
+    "Untitled.canvas",
     "abschluss_arbeit/2023-04-06.md",
-    "abschluss_arbeit/2023-04-08.md",
-    "abschluss_arbeit/2023-03-30.md"
+    "abschluss_arbeit/2023-03-30.md",
+    "abschluss_arbeit/2023-04-08.md"
   ]
 }
