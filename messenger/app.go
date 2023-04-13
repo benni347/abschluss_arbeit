@@ -70,7 +70,6 @@ func run(done chan bool) {
 
 func (a *App) Publisher(msg string, url string) {
 	url = "http://" + url + "/publish"
-
 }
 
 func dial(url string) {
