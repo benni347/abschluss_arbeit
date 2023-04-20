@@ -1,4 +1,5 @@
-import {Publisher} from '../wailsjs/go/main/App'; 
+import { Publisher, Dial } from '../wailsjs/go/main/App';
+
 
 ;(() => {
   // expectingMessage is set to true
@@ -6,8 +7,22 @@ import {Publisher} from '../wailsjs/go/main/App';
   // and so we should scroll the next message into view when received.
   let expectingMessage = false
   function dial() {
-        console.log(`${location.host}`)
-
+    
+    let msg = ""
+    let error = ""
+    console.info(`location.host Type: ${typeof location.host}`)
+    msg, error = Dial(location.host)
+    console.log(msg)
+    if (msg === "") {
+      appendLog(`WebSocket Disconnected code: ${error}`, true)
+    }
+    const p = appendLog(msg)
+    if (expectingMessage) {
+      p.scrollIntoView()
+      expectingMessage = false
+    }
+   /* 
+    console.log("dialing")
     const conn = new WebSocket(`ws://${location.host}/ws`)
     conn.addEventListener("close", ev => {
       appendLog(`WebSocket Disconnected code: ${ev.code}, reason: ${ev.reason}`, true)
@@ -32,6 +47,8 @@ import {Publisher} from '../wailsjs/go/main/App';
         expectingMessage = false
       }
     })
+    */
+    
   }
   dial()
 
@@ -63,17 +80,9 @@ import {Publisher} from '../wailsjs/go/main/App';
     messageInput.value = ""
 
     expectingMessage = true
-    try {
-      const resp = await fetch("/publish", {
-        method: "POST",
-        body: msg,
-      })
-      if (resp.status !== 202) {
-        throw new Error(`Unexpected HTTP Status ${resp.status} ${resp.statusText}`)
+    let error = Publisher(msg, location.host)
+    appendLog(`Publish failed: ${msg}`, error)
       }
-    } catch (err) {
-      appendLog(`Publish failed: ${err.message}`, true)
-    }
-  }
 })()
 
+console.log(Publisher("hello", location.host))
