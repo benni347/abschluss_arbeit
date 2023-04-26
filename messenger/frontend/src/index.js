@@ -13,11 +13,12 @@ import { Publisher, Dial } from "../wailsjs/go/main/App";
     console.log(msg);
     if (msg === "") {
       appendLog(`WebSocket Disconnected code: ${error}`, true);
-    }
-    const p = appendLog(msg);
-    if (expectingMessage) {
-      p.scrollIntoView();
-      expectingMessage = false;
+    } else {
+      const p = appendLog(msg);
+      if (expectingMessage) {
+        p.scrollIntoView();
+        expectingMessage = false;
+      }
     }
     /* 
     console.log("dialing")
