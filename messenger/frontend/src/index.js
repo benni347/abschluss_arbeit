@@ -8,7 +8,6 @@ import { Publisher, Dial } from "../wailsjs/go/main/App";
   function dial() {
     let msg = "";
     let error = "";
-    console.info(`location.host Type: ${typeof location.host}`);
     msg, (error = Dial(location.host));
     console.log(msg);
     if (msg === "") {
@@ -82,5 +81,3 @@ import { Publisher, Dial } from "../wailsjs/go/main/App";
     appendLog(`Publish failed: ${msg}`, error);
   };
 })();
-
-console.log(Publisher("hello", location.host));
