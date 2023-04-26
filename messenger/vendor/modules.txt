@@ -1,6 +1,28 @@
+# github.com/benni347/encryption v1.0.0
+## explicit; go 1.20
+github.com/benni347/encryption
 # github.com/bep/debounce v1.2.1
 ## explicit
 github.com/bep/debounce
+# github.com/cloudflare/circl v1.3.2
+## explicit; go 1.17
+github.com/cloudflare/circl/internal/sha3
+github.com/cloudflare/circl/sign/dilithium
+github.com/cloudflare/circl/sign/dilithium/internal/common
+github.com/cloudflare/circl/sign/dilithium/internal/common/params
+github.com/cloudflare/circl/sign/dilithium/mode2
+github.com/cloudflare/circl/sign/dilithium/mode2/internal
+github.com/cloudflare/circl/sign/dilithium/mode2aes
+github.com/cloudflare/circl/sign/dilithium/mode2aes/internal
+github.com/cloudflare/circl/sign/dilithium/mode3
+github.com/cloudflare/circl/sign/dilithium/mode3/internal
+github.com/cloudflare/circl/sign/dilithium/mode3aes
+github.com/cloudflare/circl/sign/dilithium/mode3aes/internal
+github.com/cloudflare/circl/sign/dilithium/mode5
+github.com/cloudflare/circl/sign/dilithium/mode5/internal
+github.com/cloudflare/circl/sign/dilithium/mode5aes
+github.com/cloudflare/circl/sign/dilithium/mode5aes/internal
+github.com/cloudflare/circl/simd/keccakf1600
 # github.com/go-ole/go-ole v1.2.6
 ## explicit; go 1.12
 github.com/go-ole/go-ole
@@ -50,6 +72,9 @@ github.com/pkg/errors
 # github.com/samber/lo v1.27.1
 ## explicit; go 1.18
 github.com/samber/lo
+# github.com/symbolicsoft/kyber-k2so v0.2.0
+## explicit; go 1.16
+github.com/symbolicsoft/kyber-k2so
 # github.com/tkrajina/go-reflector v0.5.5
 ## explicit; go 1.17
 github.com/tkrajina/go-reflector/reflector
@@ -111,14 +136,16 @@ github.com/wailsapp/wails/v2/pkg/options/linux
 github.com/wailsapp/wails/v2/pkg/options/mac
 github.com/wailsapp/wails/v2/pkg/options/windows
 github.com/wailsapp/wails/v2/pkg/runtime
-# golang.org/x/crypto v0.1.0
+# golang.org/x/crypto v0.8.0
 ## explicit; go 1.17
 golang.org/x/crypto/acme
 golang.org/x/crypto/acme/autocert
+golang.org/x/crypto/blake2b
+golang.org/x/crypto/sha3
 # golang.org/x/exp v0.0.0-20220303212507-bbda1eaf7a17
 ## explicit; go 1.18
 golang.org/x/exp/constraints
-# golang.org/x/net v0.7.0
+# golang.org/x/net v0.9.0
 ## explicit; go 1.17
 golang.org/x/net/html
 golang.org/x/net/html/atom
@@ -130,11 +157,12 @@ golang.org/x/net/idna
 golang.org/x/net/websocket
 # golang.org/x/sys v0.7.0
 ## explicit; go 1.17
+golang.org/x/sys/cpu
 golang.org/x/sys/internal/unsafeheader
 golang.org/x/sys/unix
 golang.org/x/sys/windows
 golang.org/x/sys/windows/registry
-# golang.org/x/text v0.7.0
+# golang.org/x/text v0.9.0
 ## explicit; go 1.17
 golang.org/x/text/secure/bidirule
 golang.org/x/text/transform

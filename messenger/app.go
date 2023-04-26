@@ -11,6 +11,7 @@ import (
 	"os/signal"
 	"time"
 
+	"github.com/benni347/encryption"
 	"nhooyr.io/websocket"
 )
 
@@ -73,21 +74,23 @@ func run(done chan bool) {
 }
 
 func (a *App) Publisher(msg string, urlStr string) error {
-	fmt.Println("Publishing message: ", msg)
-	fmt.Println("Publishing to: ", urlStr)
+	encryption.PrintInfo(fmt.Sprintf("Publishing message: %s", msg), true)
+	encryption.PrintInfo(fmt.Sprintf("Publishing to: %s", urlStr), true)
 
 	// Parse the WebSocket URL.
 	u, err := url.Parse("ws://" + urlStr + "/publish")
 	if err != nil {
-		fmt.Println("Error: ", err)
+		encryption.PrintError("Error during parsing url: ", err)
 		return fmt.Errorf("Publish Failed: %s", err)
 	}
 
 	// Dial the WebSocket server.
 	ctx := context.Background()
+	encryption.PrintInfo("Dialing WebSocket...", true)
+	encryption.PrintInfo(fmt.Sprintf("The websocket ctx is: %s", ctx), true)
 	conn, _, err := websocket.Dial(ctx, u.String(), nil)
 	if err != nil {
-		fmt.Println("Error: ", err)
+		encryption.PrintError("Error during dialing: ", err)
 		return fmt.Errorf("Publish Failed: %s", err)
 	}
 	defer conn.Close(websocket.StatusInternalError, "WebSocket connection closed")
@@ -95,7 +98,7 @@ func (a *App) Publisher(msg string, urlStr string) error {
 	// Send the message over the WebSocket connection.
 	err = conn.Write(ctx, websocket.MessageText, []byte(msg))
 	if err != nil {
-		fmt.Println("Error: ", err)
+		encryption.PrintError("Error during writing: ", err)
 		return fmt.Errorf("Publish Failed: %s", err)
 	}
 
@@ -103,22 +106,22 @@ func (a *App) Publisher(msg string, urlStr string) error {
 }
 
 func (a *App) Dial(location string) (string, error) {
-	fmt.Println("Dialing: ", location)
+	encryption.PrintInfo(fmt.Sprintf("Dialing: %s", location), true)
 	u := url.URL{Scheme: "ws", Host: location, Path: "/ws"}
 
 	conn, _, err := websocket.Dial(context.Background(), u.String(), nil)
 	if err != nil {
-		fmt.Printf("Failed to dial WebSocket: %v", err)
+		encryption.PrintError("Failed to dial WebSocket: ", err)
 		return "", fmt.Errorf("Dial Failed: %s", err)
 	}
 	defer conn.Close(websocket.StatusInternalError, "WebSocket connection closed")
 
 	// Handle WebSocket events.
-	fmt.Println("WebSocket connected")
+	encryption.PrintInfo("WebSocket connected", true)
 	for {
 		messageType, message, err := conn.Read(context.Background())
 		if err != nil {
-			fmt.Printf("Failed to read WebSocket message: %v", err)
+			encryption.PrintError("Failed to read WebSocket message: ", err)
 			break
 		}
 
