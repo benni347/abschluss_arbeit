@@ -1,27 +1,25 @@
-import { Publisher, Dial } from '../wailsjs/go/main/App';
+import { Publisher, Dial } from "../wailsjs/go/main/App";
 
-
-;(() => {
+(() => {
   // expectingMessage is set to true
   // if the user has just submitted a message
   // and so we should scroll the next message into view when received.
-  let expectingMessage = false
+  let expectingMessage = false;
   function dial() {
-    
-    let msg = ""
-    let error = ""
-    console.info(`location.host Type: ${typeof location.host}`)
-    msg, error = Dial(location.host)
-    console.log(msg)
+    let msg = "";
+    let error = "";
+    console.info(`location.host Type: ${typeof location.host}`);
+    msg, (error = Dial(location.host));
+    console.log(msg);
     if (msg === "") {
-      appendLog(`WebSocket Disconnected code: ${error}`, true)
+      appendLog(`WebSocket Disconnected code: ${error}`, true);
     }
-    const p = appendLog(msg)
+    const p = appendLog(msg);
     if (expectingMessage) {
-      p.scrollIntoView()
-      expectingMessage = false
+      p.scrollIntoView();
+      expectingMessage = false;
     }
-   /* 
+    /* 
     console.log("dialing")
     const conn = new WebSocket(`ws://${location.host}/ws`)
     conn.addEventListener("close", ev => {
@@ -48,41 +46,40 @@ import { Publisher, Dial } from '../wailsjs/go/main/App';
       }
     })
     */
-    
   }
-  dial()
+  const messageLog = document.getElementById("message-log");
+  const publishForm = document.getElementById("publish-form");
+  const messageInput = document.getElementById("message-input");
 
-  const messageLog = document.getElementById("message-log")
-  const publishForm = document.getElementById("publish-form")
-  const messageInput = document.getElementById("message-input")
+  dial();
 
   // appendLog appends the passed text to messageLog.
   function appendLog(text, error) {
-    const p = document.createElement("p")
+    const p = document.createElement("p");
     // Adding a timestamp to each message makes the log easier to read.
-    p.innerText = `${new Date().toLocaleTimeString()}: ${text}`
+    p.innerText = `${new Date().toLocaleTimeString()}: ${text}`;
     if (error) {
-      p.style.color = "red"
-      p.style.fontStyle = "bold"
+      p.style.color = "red";
+      p.style.fontStyle = "bold";
     }
-    messageLog.append(p)
-    return p
+    messageLog.append(p);
+    return p;
   }
 
   // onsubmit publishes the message from the user when the form is submitted.
-  publishForm.onsubmit = async ev => {
-    ev.preventDefault()
+  publishForm.onsubmit = async (ev) => {
+    ev.preventDefault();
 
-    const msg = messageInput.value
+    const msg = messageInput.value;
     if (msg === "") {
-      return
+      return;
     }
-    messageInput.value = ""
+    messageInput.value = "";
 
-    expectingMessage = true
-    let error = Publisher(msg, location.host)
-    appendLog(`Publish failed: ${msg}`, error)
-      }
-})()
+    expectingMessage = true;
+    let error = Publisher(msg, location.host);
+    appendLog(`Publish failed: ${msg}`, error);
+  };
+})();
 
-console.log(Publisher("hello", location.host))
+console.log(Publisher("hello", location.host));
