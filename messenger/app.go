@@ -79,10 +79,14 @@ func (a *App) Publisher(msg string, urlStr string) error {
 	}
 
 	// Dial the WebSocket server.
-	ctx := context.Background()
+	ctx, cancel := context.WithTimeout(context.Background(), time.Minute)
+	defer cancel()
 	encryption.PrintInfo("Dialing WebSocket...", true)
 	encryption.PrintInfo(fmt.Sprintf("The websocket ctx is: %s", ctx), true)
+	encryption.PrintInfo(fmt.Sprintf("The websocket url is: %s", u.String()), true)
 	conn, _, err := websocket.Dial(ctx, u.String(), nil)
+	fmt.Println(fmt.Sprintf("The websocket conn is: %v", conn))
+	fmt.Println(fmt.Sprintf("The websocket err is: %v", err))
 	if err != nil {
 		encryption.PrintError("Error during dialing: ", err)
 		return fmt.Errorf("Publish Failed: %s", err)
@@ -102,6 +106,8 @@ func (a *App) Publisher(msg string, urlStr string) error {
 func (a *App) Dial(location string) (string, error) {
 	encryption.PrintInfo(fmt.Sprintf("Dialing: %s", location), true)
 	u := url.URL{Scheme: "ws", Host: location, Path: "/ws"}
+
+	encryption.PrintInfo(fmt.Sprintf("The websocket url is: %s", u.String()), true)
 
 	conn, _, err := websocket.Dial(context.Background(), u.String(), nil)
 	if err != nil {
