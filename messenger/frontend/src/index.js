@@ -1,3 +1,4 @@
+/*
 import { Publisher, Dial } from "../wailsjs/go/main/App";
 
 (() => {
@@ -45,7 +46,6 @@ import { Publisher, Dial } from "../wailsjs/go/main/App";
         expectingMessage = false
       }
     })
-    */
   }
   const messageLog = document.getElementById("message-log");
   const publishForm = document.getElementById("publish-form");
@@ -81,3 +81,4 @@ import { Publisher, Dial } from "../wailsjs/go/main/App";
     appendLog(`Publish failed: ${msg}`, error);
   };
 })();
+*/
