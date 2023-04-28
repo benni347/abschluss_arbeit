@@ -33,12 +33,6 @@ func (a *App) startup(ctx context.Context) {
 	go run(done)
 }
 
-// Greet returns a greeting for the given name
-/*
-func (a *App) Greet(name string) string {
-	return fmt.Sprintf("Hello %s, It's show time!", name)
-}
-*/
 func run(done chan bool) {
 	l, err := net.Listen("tcp", "localhost:0")
 	if err != nil {
