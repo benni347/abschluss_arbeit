@@ -23,10 +23,19 @@ func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
 }
 
+type Config struct {
+	verbose bool
+}
+
 type WebRTCConfig struct {
 	connected     *bool
 	localMessage  *string
 	remoteMessage *string
+}
+
+type AllConfig struct {
+	Config
+	WebRTCConfig
 	App
 }
 
@@ -41,9 +50,9 @@ func (a *App) CreatePeerConnection() *webrtc.PeerConnection {
 	return peerConnection
 }
 
-func (w *WebRTCConfig) TransmitDataText(peerConnection *webrtc.PeerConnection, data string) {
+func (a *AllConfig) TransmitDataText(peerConnection *webrtc.PeerConnection, data string) {
 	m := &utils.MessengerUtils{
-		Verbose: true,
+		Verbose: a.Config.verbose,
 	}
 	m.PrintInfo("Started the connection process")
 
