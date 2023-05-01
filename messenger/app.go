@@ -51,6 +51,7 @@ func (a *App) CreatePeerConnection() *webrtc.PeerConnection {
 }
 
 func (a *AllConfig) TransmitDataText(peerConnection *webrtc.PeerConnection, data string) {
+	a.Config.verbose = true // Atleast for now for testing and developing the things, maybe later we can make it a flag, when we release it.
 	m := &utils.MessengerUtils{
 		Verbose: a.Config.verbose,
 	}
