@@ -23,6 +23,13 @@ func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
 }
 
+type WebRTCConfig struct {
+	connected     *bool
+	localMessage  *string
+	remoteMessage *string
+	App
+}
+
 func (a *App) CreatePeerConnection() *webrtc.PeerConnection {
 	// Create a new RTCPeerConnection
 	peerConnection, err := webrtc.NewPeerConnection(webrtc.Configuration{})
@@ -61,4 +68,9 @@ func (a *App) TransmitDataText(peerConnection *webrtc.PeerConnection, data strin
 	dataChannel.OnMessage(func(msg webrtc.DataChannelMessage) {
 		println("Received message: " + string(msg.Data))
 	})
+}
+func (w *WebRTCConfig) Constructor() {
+	w.connected = new(bool)
+	w.localMessage = new(string)
+	w.remoteMessage = new(string)
 }
