@@ -1,28 +1,13 @@
-# github.com/benni347/encryption v1.0.1
+# github.com/benni347/encryption v1.0.6
 ## explicit; go 1.20
-github.com/benni347/encryption
+# github.com/benni347/messengerutils v0.0.7
+## explicit; go 1.20
+github.com/benni347/messengerutils
 # github.com/bep/debounce v1.2.1
 ## explicit
 github.com/bep/debounce
 # github.com/cloudflare/circl v1.3.2
 ## explicit; go 1.17
-github.com/cloudflare/circl/internal/sha3
-github.com/cloudflare/circl/sign/dilithium
-github.com/cloudflare/circl/sign/dilithium/internal/common
-github.com/cloudflare/circl/sign/dilithium/internal/common/params
-github.com/cloudflare/circl/sign/dilithium/mode2
-github.com/cloudflare/circl/sign/dilithium/mode2/internal
-github.com/cloudflare/circl/sign/dilithium/mode2aes
-github.com/cloudflare/circl/sign/dilithium/mode2aes/internal
-github.com/cloudflare/circl/sign/dilithium/mode3
-github.com/cloudflare/circl/sign/dilithium/mode3/internal
-github.com/cloudflare/circl/sign/dilithium/mode3aes
-github.com/cloudflare/circl/sign/dilithium/mode3aes/internal
-github.com/cloudflare/circl/sign/dilithium/mode5
-github.com/cloudflare/circl/sign/dilithium/mode5/internal
-github.com/cloudflare/circl/sign/dilithium/mode5aes
-github.com/cloudflare/circl/sign/dilithium/mode5aes/internal
-github.com/cloudflare/circl/simd/keccakf1600
 # github.com/go-ole/go-ole v1.2.6
 ## explicit; go 1.12
 github.com/go-ole/go-ole
@@ -37,28 +22,28 @@ github.com/jchv/go-winloader/internal/memloader
 github.com/jchv/go-winloader/internal/pe
 github.com/jchv/go-winloader/internal/vmem
 github.com/jchv/go-winloader/internal/winloader
-# github.com/labstack/echo/v4 v4.9.0
+# github.com/labstack/echo/v4 v4.10.2
 ## explicit; go 1.17
 github.com/labstack/echo/v4
-# github.com/labstack/gommon v0.3.1
+# github.com/labstack/gommon v0.4.0
 ## explicit; go 1.12
 github.com/labstack/gommon/color
 github.com/labstack/gommon/log
-# github.com/leaanthony/go-ansi-parser v1.0.1
+# github.com/leaanthony/go-ansi-parser v1.6.0
 ## explicit; go 1.16
 github.com/leaanthony/go-ansi-parser
 # github.com/leaanthony/gosod v1.0.3
 ## explicit; go 1.16
 github.com/leaanthony/gosod
 github.com/leaanthony/gosod/internal/templatedir
-# github.com/leaanthony/slicer v1.5.0
+# github.com/leaanthony/slicer v1.6.0
 ## explicit; go 1.13
 github.com/leaanthony/slicer
-# github.com/mattn/go-colorable v0.1.11
-## explicit; go 1.13
+# github.com/mattn/go-colorable v0.1.13
+## explicit; go 1.15
 github.com/mattn/go-colorable
-# github.com/mattn/go-isatty v0.0.14
-## explicit; go 1.12
+# github.com/mattn/go-isatty v0.0.18
+## explicit; go 1.15
 github.com/mattn/go-isatty
 # github.com/pion/datachannel v1.5.5
 ## explicit; go 1.13
@@ -114,7 +99,7 @@ github.com/pion/rtcp
 github.com/pion/rtp
 github.com/pion/rtp/codecs
 github.com/pion/rtp/pkg/obu
-# github.com/pion/sctp v1.8.6
+# github.com/pion/sctp v1.8.7
 ## explicit; go 1.13
 github.com/pion/sctp
 # github.com/pion/sdp/v3 v3.0.6
@@ -149,7 +134,7 @@ github.com/pion/turn/v2/internal/server
 ## explicit; go 1.14
 github.com/pion/udp/v2
 github.com/pion/udp/v2/pkg/sync
-# github.com/pion/webrtc/v3 v3.2.0
+# github.com/pion/webrtc/v3 v3.2.1
 ## explicit; go 1.13
 github.com/pion/webrtc/v3
 github.com/pion/webrtc/v3/internal/fmtp
@@ -157,25 +142,27 @@ github.com/pion/webrtc/v3/internal/mux
 github.com/pion/webrtc/v3/internal/util
 github.com/pion/webrtc/v3/pkg/media
 github.com/pion/webrtc/v3/pkg/rtcerr
-# github.com/pkg/browser v0.0.0-20210706143420-7d21f8c997e2
+# github.com/pkg/browser v0.0.0-20210911075715-681adbf594b8
 ## explicit; go 1.14
 github.com/pkg/browser
 # github.com/pkg/errors v0.9.1
 ## explicit
 github.com/pkg/errors
-# github.com/samber/lo v1.27.1
+# github.com/rivo/uniseg v0.4.4
+## explicit; go 1.18
+github.com/rivo/uniseg
+# github.com/samber/lo v1.38.1
 ## explicit; go 1.18
 github.com/samber/lo
 # github.com/symbolicsoft/kyber-k2so v0.2.0
 ## explicit; go 1.16
-github.com/symbolicsoft/kyber-k2so
-# github.com/tkrajina/go-reflector v0.5.5
+# github.com/tkrajina/go-reflector v0.5.6
 ## explicit; go 1.17
 github.com/tkrajina/go-reflector/reflector
 # github.com/valyala/bytebufferpool v1.0.0
 ## explicit
 github.com/valyala/bytebufferpool
-# github.com/valyala/fasttemplate v1.2.1
+# github.com/valyala/fasttemplate v1.2.2
 ## explicit; go 1.12
 github.com/valyala/fasttemplate
 # github.com/wailsapp/mimetype v1.4.1
@@ -234,14 +221,12 @@ github.com/wailsapp/wails/v2/pkg/runtime
 ## explicit; go 1.17
 golang.org/x/crypto/acme
 golang.org/x/crypto/acme/autocert
-golang.org/x/crypto/blake2b
 golang.org/x/crypto/cryptobyte
 golang.org/x/crypto/cryptobyte/asn1
 golang.org/x/crypto/curve25519
 golang.org/x/crypto/curve25519/internal/field
-golang.org/x/crypto/sha3
-# golang.org/x/exp v0.0.0-20220303212507-bbda1eaf7a17
-## explicit; go 1.18
+# golang.org/x/exp v0.0.0-20230425010034-47ecfdc1ba53
+## explicit; go 1.20
 golang.org/x/exp/constraints
 # golang.org/x/net v0.9.0
 ## explicit; go 1.17
