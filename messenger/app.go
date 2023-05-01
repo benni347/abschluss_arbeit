@@ -69,6 +69,12 @@ func (a *App) TransmitDataText(peerConnection *webrtc.PeerConnection, data strin
 		println("Received message: " + string(msg.Data))
 	})
 }
+
+func (a *App) Disconnect() {
+	// Close the connection
+	a.ctx.Done()
+}
+
 func (w *WebRTCConfig) Constructor() {
 	w.connected = new(bool)
 	w.localMessage = new(string)
