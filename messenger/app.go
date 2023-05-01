@@ -41,7 +41,12 @@ func (a *App) CreatePeerConnection() *webrtc.PeerConnection {
 	return peerConnection
 }
 
-func (a *App) TransmitDataText(peerConnection *webrtc.PeerConnection, data string) {
+func (w *WebRTCConfig) TransmitDataText(peerConnection *webrtc.PeerConnection, data string) {
+	m := &utils.MessengerUtils{
+		Verbose: true,
+	}
+	m.PrintInfo("Started the connection process")
+
 	protcol := "tcp"
 	order := true
 	var maxReTransmission uint16 = 5000
