@@ -34,7 +34,7 @@ func (a *App) CreatePeerConnection() *webrtc.PeerConnection {
 	// Create a new RTCPeerConnection
 	peerConnection, err := webrtc.NewPeerConnection(webrtc.Configuration{})
 	if err != nil {
-		utils.PrintError(err)
+		utils.PrintError("During the PeerConnection an error ocured", err)
 		panic(err)
 	}
 
