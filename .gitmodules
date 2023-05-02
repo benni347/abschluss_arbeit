@@ -1,0 +1,3 @@
+[submodule "messenger"]
+	path = messenger
+	url = git@github.com:benni347/messenger.git
