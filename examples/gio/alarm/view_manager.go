@@ -41,3 +41,32 @@ type ViewManager interface {
 	SetThemeing(bool)
 	ApplySettings(core.SettingsService)
 }
+
+type viewManager struct {
+	views       map[viewId]View
+	currentView viewId
+	window      *app.Window
+
+	core.AP
+
+	*component.AppBar
+	*component.ModalNavDrawer
+	*component.ModalLayer
+	component.NavDrawer
+	navigationAnimator component.VisibilityAnimation
+
+	intentToView map[IntentID]viewId
+
+	SelectedOverflowTagFunc func() interface{}
+
+	viewStack []viewId
+
+	dockDrawer bool
+
+	profilingEnabled bool
+	profile          profile.Event
+	lastMallocs      uint64
+
+	themeingEnabled bool
+	themeView       View
+}
