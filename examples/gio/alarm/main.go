@@ -83,10 +83,10 @@ func run(w *app.Window) error {
 	return nil
 }
 
-type viewID int
+type viewId int
 
 const (
-	ConnectFormID viewID = iota
+	ConnectFormID viewId = iota
 	IdentityFormID
 	SettingsID
 	ReplyViewID
