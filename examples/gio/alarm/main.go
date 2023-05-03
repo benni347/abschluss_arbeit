@@ -80,7 +80,21 @@ func run(w *app.Window) error {
 	signal.Notify(sigs, os.Interrupt)
 
 	viewManager := NewViewManager(w, app)
+	return nil
 }
+
+type ViewID int
+
+const (
+	ConnectFormID ViewID = iota
+	IdentityFormID
+	SettingsID
+	ReplyViewID
+	ConsentViewID
+	SubscriptionViewID
+	SubscriptionSetupFormViewID
+	DynamicChatViewID
+)
 
 func getDataDir(folderName string) (string, error) {
 	data, err := app.DataDir()
