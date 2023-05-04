@@ -9,6 +9,8 @@ func main() {
 	a := app.New()
 	a.Settings().SetTheme(&myTheme{})
 	w := a.NewWindow("Alarm")
+	input := widget.NewEntry()
+	input.SetPlaceHolder("Enter a time (e.g. 1330)")
 	w.SetContent(widget.NewLabel("Hello Fyne!"))
 	w.ShowAndRun()
 }
