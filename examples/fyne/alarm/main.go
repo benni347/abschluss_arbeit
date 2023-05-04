@@ -7,7 +7,8 @@ import (
 
 func main() {
 	a := app.New()
-	w := a.NewWindow("Hello")
+	a.Settings().SetTheme(&myTheme{})
+	w := a.NewWindow("Alarm")
 	w.SetContent(widget.NewLabel("Hello Fyne!"))
 	w.ShowAndRun()
 }
