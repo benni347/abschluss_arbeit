@@ -33,7 +33,6 @@ func main() {
 		previewLabel,
 	)
 	w.SetContent(content)
-	m.PrintInfo("Starting the app", "and the current time is:", time.Now())
 	w.ShowAndRun()
 }
 
