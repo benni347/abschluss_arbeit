@@ -2,6 +2,7 @@ package main
 
 import (
 	"strconv"
+	"time"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
@@ -32,6 +33,7 @@ func main() {
 		previewLabel,
 	)
 	w.SetContent(content)
+	m.PrintInfo("Starting the app", "and the current time is:", time.Now())
 	w.ShowAndRun()
 }
 
