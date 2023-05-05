@@ -18,12 +18,18 @@ func main() {
 	w := a.NewWindow("Alarm")
 	input := newNumericalEntry()
 	input.SetPlaceHolder("Enter a time (e.g. 1330)")
+	previewLabel := widget.NewLabel("")
 	content := container.NewVBox(
 		input,
 		widget.NewButton(
 			"Retrive time",
-			func() { m.PrintInfo("The value entered in time is: ", input.Text) },
+			func() {
+				timeValue := input.Text
+				m.PrintInfo("The value entered in time is: ", timeValue)
+				previewLabel.SetText(timeValue)
+			},
 		),
+		previewLabel,
 	)
 	w.SetContent(content)
 	w.ShowAndRun()
