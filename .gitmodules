@@ -8,3 +8,6 @@
 [submodule "abschluss-arbeit-doku"]
 	path = abschluss-arbeit-doku
 	url = git@github.com:benni347/abschluss-arbeit-doku.git
+[submodule "encryption"]
+	path = encryption
+	url = git@github.com:benni347/encryption.git
