@@ -1,3 +1,13 @@
 [submodule "messenger"]
 	path = messenger
 	url = git@github.com:benni347/messenger.git
+	branch = main
+[submodule "messengerutils"]
+	path = messengerutils
+	url = git@github.com:benni347/messengerutils.git
+[submodule "abschluss-arbeit-doku"]
+	path = abschluss-arbeit-doku
+	url = git@github.com:benni347/abschluss-arbeit-doku.git
+[submodule "encryption"]
+	path = encryption
+	url = git@github.com:benni347/encryption.git
