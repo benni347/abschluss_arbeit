@@ -1,0 +1,6 @@
+[Details]
+  Icon = "Icon.png"
+  Name = "Alarm"
+  ID = "me.skwar.cedric.alarm"
+  Version = "0.1.0"
+  Build = 11

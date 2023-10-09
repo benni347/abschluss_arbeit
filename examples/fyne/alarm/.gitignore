@@ -1,0 +1,4 @@
+*.apk
+*.wasm
+alarm
+fyne-cross/
